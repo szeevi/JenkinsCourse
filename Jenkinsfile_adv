@@ -15,7 +15,12 @@ pipeline {
                 chmod 755 *.sh
             '''
          }
-      }
+      }      
+        stage("Env Variables") {
+            steps {
+                sh "printenv"
+            }
+        }    
       stage('Test') {
          steps {
             echo 'Test process..'
