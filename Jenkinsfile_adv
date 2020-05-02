@@ -32,19 +32,19 @@ pipeline {
             '''
          }
       }
-      stage('Deploy') {
+      stage('Saving Results') {
          steps {
-            echo 'Deploy process..'
+            echo 'Saving Results process..'
             sh '''
+	      report_file="~/Documents/Deployment/report"
               mkdir -p ~/Documents/Deployment/              
-              if [ -f "report" ]; then
-                echo "file report exists"
+              if [ -f "${report_file}" ]; then
+                echo "file ${report_file} exists"
               else
-	              touch report
-              fi
-              echo "saving results"
-              echo "Build Number $BN" >> report
-              echo ${WORKSPACE}/scripts/results >> report
+	              touch ${report_file}
+              fi              
+              echo "Build Number $BUILD_NUMBER" >> ${report_file}
+              echo ${WORKSPACE}/scripts/results >> ${report_file}
             '''
          }
       }
