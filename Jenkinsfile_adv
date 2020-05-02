@@ -31,8 +31,7 @@ pipeline {
          steps {
             echo 'Deploy process..'
             sh '''
-              mkdir -p ~/Documents/Deployment/
-              cp ~/Documents/Deployment/
+              mkdir -p ~/Documents/Deployment/              
               if [ -f "report" ]; then
                 echo "file report exists"
               else
