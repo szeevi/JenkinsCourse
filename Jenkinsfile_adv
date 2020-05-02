@@ -45,6 +45,7 @@ pipeline {
               fi              
               echo "Build Number $BUILD_NUMBER" >> ${report_file}
               echo ${WORKSPACE}/scripts/results >> ${report_file}
+	      echo "#############################" >> ${report_file}
             '''
          }
       }
