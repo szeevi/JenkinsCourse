@@ -1,3 +1,5 @@
+#!/bin/bash
+
 var=$1
 copy=${var}
 
