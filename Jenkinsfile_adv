@@ -1,0 +1,49 @@
+pipeline {
+  agent { node { label 'slave01' } }
+
+   stages {
+      stage('Clone Sources') {
+        steps {
+          checkout scm
+        } 
+      }
+      stage('Build') {
+         steps {
+            echo 'Build process..'            
+            sh '''
+                cd ${WORKSPACE}/scripts/
+                chmod 755 *.sh
+            '''
+         }
+      }
+      stage('Test') {
+         steps {
+            echo 'Test process..'
+            sh '''
+              echo "Testing input string $PARAM" 
+              cd ${WORKSPACE}/scripts
+              reverse.sh $PARAM
+              reverse.sh $PARAM > results
+            '''
+         }
+      }
+      stage('Deploy') {
+         steps {
+            echo 'Deploy process..'
+            sh '''
+              mkdir -p ~/Documents/Deployment/
+              cp ~/Documents/Deployment/
+              if [ -f "report" ]; then
+                echo "file report exists"
+              else
+	              touch report
+              fi
+              echo "saving results"
+              echo "Build Number $BN" >> report
+              echo ${WORKSPACE}/scripts/results >> report
+            '''
+         }
+      }
+      
+   }
+}
