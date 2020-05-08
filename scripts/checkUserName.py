@@ -1,7 +1,8 @@
 #!/usr/bin/python
+import sys
 
-#get the username from a prompt
-username = raw_input("Login: >> ")
+#get the username from an argument
+username = sys.argv[1]
 
 #list of allowed users
 user1 = "Jack"
