@@ -23,7 +23,7 @@ pipeline {
             echo 'Execute python script'
             sh '''
               chmod 755 ${WORKSPACE}/scripts/checkUserName.py
-              ${WORKSPACE}/scripts/checkUserName.py
+              ${WORKSPACE}/scripts/checkUserName.py $USER
             '''
             
          }
