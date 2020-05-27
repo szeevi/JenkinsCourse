@@ -21,8 +21,10 @@ pipeline {
       stage('Execute python script') {
          steps {
             echo 'Execute python script'
-            chmod 755 ${WORKSPACE}/scripts/checkUserName.py
-            ${WORKSPACE}/scripts/checkUserName.py
+            sh '''
+              chmod 755 ${WORKSPACE}/scripts/checkUserName.py
+              ${WORKSPACE}/scripts/checkUserName.py
+            '''
             
          }
       }
