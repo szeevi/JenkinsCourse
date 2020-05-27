@@ -20,7 +20,9 @@ pipeline {
       }
       stage('Execute python script') {
          steps {
-            echo 'Test process..'
+            echo 'Execute python script'
+            ${WORKSPACE}/scripts/
+            
          }
       }
       stage('Execute bash script') {
