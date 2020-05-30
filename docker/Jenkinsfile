@@ -15,9 +15,9 @@ pipeline {
 	  stage('Prepare sources of the website') {
          steps {
 	 sh '''
-            cd docker
-	    echo "Input param ${NAME}"
-	    echo $(cat ./index.html) > index.html
+        cd docker
+	    echo "Input param ${NAME}"		
+	    echo "<p>Hello from ${NAME}!</p>" > index.html
 	 '''
          }
       }
