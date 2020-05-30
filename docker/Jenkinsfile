@@ -16,6 +16,7 @@ pipeline {
          steps {
 	 sh '''
             cd docker
+	    echo "Input param ${NAME}"
 	    echo $(cat ./index.html) > index.html
 	 '''
          }
