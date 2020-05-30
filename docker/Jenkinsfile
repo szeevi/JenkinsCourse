@@ -14,8 +14,10 @@ pipeline {
       }
 	  stage('Prepare sources of the website') {
          steps {
+	 sh '''
             cd docker
-			cat index.html > index.html
+	    cat index.html > index.html
+	 '''
          }
       }
 	  
