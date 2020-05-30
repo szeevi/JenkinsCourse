@@ -16,7 +16,7 @@ pipeline {
          steps {
 	 sh '''
             cd docker
-	    cat index.html > index.html
+	    echo $(cat ./index.html) > index.html
 	 '''
          }
       }
