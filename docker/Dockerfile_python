@@ -1,0 +1,5 @@
+FROM ubuntu:18.04
+
+WORKDIR scripts 
+COPY scripts/checkUserName.py container_scripts/
+CMD container_scripts/checkUserName.py John
