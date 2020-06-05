@@ -3,4 +3,4 @@ FROM ubuntu:18.04
 # WORKDIR container_scripts 
 COPY scripts/checkUserName.py .
 CMD pwd
-CMD ["./checkUserName.py", "John"]
+#CMD ["./checkUserName.py", "John"]
