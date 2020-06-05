@@ -2,9 +2,9 @@ FROM ubuntu:18.04
 
 RUN apt update
 RUN apt install python -y
-# WORKDIR container_scripts 
+
+WORKDIR container_scripts
+
 COPY scripts/checkUserName.py .
-CMD pwd
-CMD ls
  
 CMD ["python", "./checkUserName.py", "John"]
