@@ -4,5 +4,5 @@ FROM ubuntu:18.04
 COPY scripts/checkUserName.py .
 CMD pwd
 CMD ls
-ADD ./checkUserName.py /
-CMD ["./checkUserName.py", "John"]
+ 
+CMD ["/bin/bash", "./checkUserName.py"]
