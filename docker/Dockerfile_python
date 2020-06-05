@@ -7,4 +7,4 @@ COPY scripts/checkUserName.py .
 CMD pwd
 CMD ls
  
-CMD ["/bin/bash", "./checkUserName.py"]
+CMD ["python", "./checkUserName.py"]
