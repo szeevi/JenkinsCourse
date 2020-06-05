@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
 
-WORKDIR scripts 
-COPY scripts/checkUserName.py container_scripts/
-CMD /container_scripts/checkUserName.py John
+WORKDIR container_scripts 
+COPY scripts/checkUserName.py .
+CMD container_scripts/checkUserName.py John
