@@ -16,4 +16,12 @@ RUN echo "copying the bash app"
 COPY scripts/reverse.sh .
 ENTRYPOINT ["bash", "./reverse.sh"]
 
+FROM base AS branch-version-all
+RUN echo "installing python and copying the python app" && apt install python -y
+COPY scripts/checkUserName.py .
+COPY scripts/reverse.sh .
+COPY scripts/all_scripts.sh .
+ENTRYPOINT ["bash", "./all_scripts.sh"]
+
+
 FROM branch-version-${language} AS final
