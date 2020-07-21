@@ -1,0 +1,19 @@
+ARG language
+
+FROM ubuntu:18.04 AS base
+RUN echo "do stuff with the ubuntu image"
+RUN apt update
+WORKDIR container_scripts
+
+FROM base AS branch-version-python
+RUN echo "installing python and copying the python app"
+RUN apt install python -y
+COPY scripts/checkUserName.py .
+ENTRYPOINT ["python", "./checkUserName.py"]
+
+FROM base AS branch-version-bash
+RUN echo "copying the bash app"
+COPY scripts/reverse.sh .
+ENTRYPOINT ["bash", "./reverse.sh"]
+
+FROM branch-version-${language} AS final
