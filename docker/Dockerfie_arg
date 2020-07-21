@@ -23,5 +23,4 @@ COPY scripts/reverse.sh .
 COPY scripts/all_scripts.sh .
 ENTRYPOINT ["bash", "./all_scripts.sh"]
 
-
 FROM branch-version-${language} AS final
