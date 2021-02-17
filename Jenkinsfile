@@ -14,7 +14,7 @@ pipeline {
             sh '''
                 echo "By the way, I can do more stuff in here"
                 ls -la ~
-				touch report
+		touch report
             '''
          }
       }
