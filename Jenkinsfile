@@ -21,6 +21,7 @@ pipeline {
       stage('Test') {
          steps {
             echo 'Test process..'
+	    sh 'exit 1'
          }
       }
       stage('Deploy') {
