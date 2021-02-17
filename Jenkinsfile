@@ -35,10 +35,10 @@ pipeline {
 			sh 'printenv'   
 		}   
 		success {   
-			echo 'I will only get executed if this success'   
+			sh 'echo "BUILD_NUMBER=$BUILD_NUMBER sucess" >> report 
 		}   
 		failure {
-			echo 'I will only get executed if this fails'   
+			sh 'echo "BUILD_NUMBER=$BUILD_NUMBER failed" >> report    
 		}   
 		unstable {   
 			echo 'I will only get executed if this is unstable'   
