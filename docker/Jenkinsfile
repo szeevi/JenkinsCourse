@@ -12,7 +12,7 @@ pipeline {
             sh 'printenv'
          }
       }
-	  stage('Prepare sources of the website') {
+	  stage('To update sources of the website') {
          steps {
 	 sh '''
         cd docker
