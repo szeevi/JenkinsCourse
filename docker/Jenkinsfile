@@ -3,8 +3,7 @@ pipeline {
 
    stages {
       stage('Clone Sources') {
-        steps {
-	  properties([pipelineTriggers([pollSCM('H * * * *')])])
+        steps {	  
           checkout scm
         } 
       }
