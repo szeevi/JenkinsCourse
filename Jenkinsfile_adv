@@ -38,7 +38,7 @@ pipeline {
             sh '''
               echo "Testing input string $PARAM" 
               cd "${WORKSPACE}/scripts"              
-              ./checkUserName.py $PARAM > results
+              ./checkUserName.py $PARAM >> results
             '''
          }
       }
