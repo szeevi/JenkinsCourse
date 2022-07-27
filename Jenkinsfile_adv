@@ -32,6 +32,16 @@ pipeline {
             '''
          }
       }
+      stage('Deployment') {
+         steps {
+            echo 'Deployment process..'
+            sh '''
+              echo "Testing input string $PARAM" 
+              cd "${WORKSPACE}/scripts"              
+              ./checkUserName.py $PARAM > results
+            '''
+         }
+      }
       stage('Saving Results') {
          steps {
             echo 'Saving Results process..'
