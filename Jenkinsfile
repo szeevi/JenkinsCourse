@@ -1,5 +1,5 @@
 pipeline {
-  agent { node { label 'slave01' } }
+  agent { node { label 'master' } }
 
    stages {
       stage('Clone Sources') {
@@ -10,18 +10,16 @@ pipeline {
       stage('Build') {
          steps {
             echo 'Build process..'
-            sh 'echo "My first pipeline"'
-            sh '''
-                echo "By the way, I can do more stuff in here"
-                ls -la ~
-		touch report
-            '''
+		script {
+                    def disk_size = sh(script: "df / --output=avail | tail -1", returnStdout: true).trim() as Integer
+                    println("disk_size = ${disk_size}")
+		}
          }
       }
       stage('Test') {
          steps {
             echo 'Test process..'
-	    sh 'exit 0'
+	    bat 'exit 0'
          }
       }
       stage('Deploy') {
@@ -33,13 +31,13 @@ pipeline {
    }
    post {   
 		always {
-			sh 'printenv'   
+			bat 'echo %PATH%'   
 		}   
 		success {   
-			sh 'echo "BUILD_NUMBER=$BUILD_NUMBER success" >> report' 
+			bat 'echo "BUILD_NUMBER=$BUILD_NUMBER success" >> report' 
 		}   
 		failure {
-			sh 'echo "BUILD_NUMBER=$BUILD_NUMBER failed" >> report'   
+			bat 'echo "BUILD_NUMBER=$BUILD_NUMBER failed" >> report'   
 		}   
 		unstable {   
 			echo 'I will only get executed if this is unstable'   
